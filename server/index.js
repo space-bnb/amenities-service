@@ -11,7 +11,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/show', function (req, res) {
-  retrieve({}) 
+  retrieve({})
     .then(data => {
       console.log('Getting all data: ', data.length);
       res.json(data);
@@ -20,4 +20,4 @@ app.get('/show', function (req, res) {
 
 app.get('/favicon.ico', (req, res) => res.end());
 
-app.listen(3000, function() { console.log('connected to port 3000') });
+app.listen(4000, function() { console.log('connected to port 4000') });

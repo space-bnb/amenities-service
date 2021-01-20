@@ -1,5 +1,5 @@
 const mongoose = require ('mongoose');
-mongoose.connect('mongodb://localhost/21027');
+mongoose.connect('mongodb://localhost/41027', { useNewUrlParser: true, useUnifiedTopology: true });
 let { amenities_seed } = require('./data_seed.js');
 
 let repoSchema = mongoose.Schema({
