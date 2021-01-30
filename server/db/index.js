@@ -1,21 +1,27 @@
 const mongoose = require ('mongoose');
-mongoose.connect('mongodb://localhost/41027', { useNewUrlParser: true, useUnifiedTopology: true });
-let { amenities_seed } = require('./data_seed.js');
+require('dotenv').config()
+mongoose.connect(`mongodb://localhost/${process.env.DB_PORT}}`, { useNewUrlParser: true, useUnifiedTopology: true });
+const { amenities_seed } = require('./data_seed.js');
+
+const amenitySchema = mongoose.Schema({
+  name: String,
+  description: String,
+  img: String
+})
 
 let repoSchema = mongoose.Schema({
-  name: String,
   id: Number,
-  office_cap: Number,
-  desks_cap: Number,
-  membership_rate: Number,
-  pass_rate: Number,
-  room_rate: Number
+  amenities: [amenitySchema]
 });
 
-let Repo = mongoose.model('Workspaces', repoSchema);
+let Repo = mongoose.model('Amenities', repoSchema);
 
 let retrieve = (filter) => {
   return Repo.find(filter, (err, docs) => err ? err : docs);
+}
+
+let remove = (filter) => {
+  return Repo.deleteMany(filter, (err) => err);
 }
 
 let seeder = () => {
@@ -31,5 +37,14 @@ let seeder = () => {
   }
 }
 
-module.exports.seeder = seeder;
+let close = () => {
+  mongoose.connection.close();
+}
+
+let initialize =  () => {
+  remove({}).then(() => seeder());
+}
+
+module.exports.initialize = initialize;
+module.exports.close = close;
 module.exports.retrieve = retrieve;
