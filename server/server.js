@@ -17,10 +17,10 @@ app.get('/amenities-api/amenities', function (req, res) {
 });
 
 app.get('/amenities-api/amenity/:id', function (req, res) {
-  if (!req.params.id) { res.setStatus(400).json("No data for given id")}
   retrieve({ id: req.params.id })
     .then(data => {
-      data.length === 0 ? res.status(400).json("ID not found") : res.json(data);
+      console.log(data)
+      data.length === 0 ? res.status(400).json("ID not found") : res.json(data[0]);
     });
 });
 

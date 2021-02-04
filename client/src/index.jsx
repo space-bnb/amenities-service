@@ -1,19 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+import axios from 'axios';
+
+import Amenity from './components/Amenity.jsx'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { amenities: [] }
+  }
+
+  componentDidMount() {
+    this.get(1);
+  }
+
+  async get(id) {
+    const { data } = await axios.get(`/amenities-api/amenity/${id}`)
+    this.setState({ amenities: data.amenities })
   }
 
   render() {
-    return (<div>
-      <div>
-        TESTING STUFF IN HERE!
+    console.log(this.state.amenities)
+    return (
+      <div id="amenity-container">
+        {this.state.amenities.map(amenity => <Amenity key={`item ${amenity.name}`} data={amenity}/>)}
       </div>
-    </div>)
+    )
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(<App />, document.getElementById('amenities'))
