@@ -5,7 +5,7 @@ const Amenity = (props) => {
   return (
     <div id={amenity.name} className="amenity-box">
       <div key={`name ${amenity.name}`} className="amenity-name">{amenity.name}</div>
-      <div key={`img ${amenity.name}`} className="amenity-img">{amenity.img}</div>
+      <img key={`img ${amenity.img}`} src={`./images/${amenity.img}.png`}/>
     </div>
   )
 }

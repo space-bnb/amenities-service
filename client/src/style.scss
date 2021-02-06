@@ -44,13 +44,25 @@ table {
 }
 
 // main css
+h2 {
+  font-size: 32px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+.anemity-full {
+  display: flex;
+
+}
+
 .amenity-container {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   align-content: space-around;
   margin: 5px;
-  height: 300px;
 }
 
 .amenity-box {
@@ -64,5 +76,5 @@ table {
 
 .amenity-name, .amenity-img {
   margin: 15px;
-
+  justify-content: center;
 }

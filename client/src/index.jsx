@@ -2,23 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import './style.scss';
+const images = require.context("./assets/icons", true)
 
 import Amenity from './components/Amenity.jsx'
 
 const preset = [{
   name: "Enhanced cleaning services",
   description: "Kogi quinoa succulents craft beer, DIY taxidermy copper mug chillwave",
-  img: "/assets/icons/clean"
+  img: "clean"
 },
 {
   name: "Hands-free dispensers",
   description: "Iceland single-origin coffee gentrify tote bag venmo sriracha",
-  img: "/assets/icons/dispense"
+  img: "dispense"
 },
 {
   name: "Enhanced HVAC standards",
   description: "Slow-carb trust fund hella kogi, shaman locavore waistcoat green juice quinoa forage shabby chic franzen heirloom put a bird on it irony",
-  img: "/assets/icons/hvac"
+  img: "hvac"
 }];
 
 class App extends React.Component {
@@ -32,10 +33,9 @@ class App extends React.Component {
   }
 
   async get(id) {
-    const { data } = await axios.get(`/amenities-api/amenity/${id}`)
-    const amenities = preset.concat(data.amenities)
-    console.log(amenities)
-    this.setState({ amenities })
+    const { data } = await axios.get(`/amenities-api/amenity/${id}`);
+    const amenities = preset.concat(data.amenities);
+    this.setState({ amenities });
   }
 
   render() {
@@ -45,7 +45,10 @@ class App extends React.Component {
         <h2 id="amenity-title">Amenities</h2>
         <h4 id="amenity-subtitle">Updated with your health and safety in mind</h4>
         <div id="amenity-container" className="amenity-container">
-          {this.state.amenities.map(amenity => <Amenity key={`item ${amenity.name}`} data={amenity}/>)}
+          {this.state.amenities.map((amenity, index) => {
+            const img = images
+            if (index < 8) { return <Amenity key={`item ${amenity.name}`} data={amenity}/>}
+          })}
         </div>
       </div>
     )
