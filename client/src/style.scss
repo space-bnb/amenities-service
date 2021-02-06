@@ -46,15 +46,15 @@ table {
 // main css
 h2 {
   font-size: 32px;
+  font-weight: 700;
 }
 
 h4 {
   font-size: 18px;
 }
 
-.anemity-full {
-  display: flex;
-
+.main-container {
+  margin: 20px;
 }
 
 .amenity-container {
@@ -62,19 +62,31 @@ h4 {
   flex-wrap: wrap;
   flex-direction: row;
   align-content: space-around;
-  margin: 5px;
 }
 
 .amenity-box {
   flex: 1 0 21%;
-  margin: 5px;
+  margin: 15px;
   border: 2px;
   flex-grow: 1;
-  background-color: rgb(247, 247, 247);
+  background-color: rgb(237, 237, 237);
   min-height: 128px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .amenity-name, .amenity-img {
-  margin: 15px;
-  justify-content: center;
+  margin: 5px;
+  text-align: center;
+}
+
+.amenity-img {
+  width: 40px;
+  height: 40px;
+}
+
+h2, h4, a {
+  margin: 20px;
 }

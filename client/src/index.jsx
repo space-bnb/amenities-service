@@ -41,7 +41,7 @@ class App extends React.Component {
   render() {
     console.log(this.state.amenities)
     return (
-      <div id="amenity-full">
+      <div id="amenity-full" className="main-container">
         <h2 id="amenity-title">Amenities</h2>
         <h4 id="amenity-subtitle">Updated with your health and safety in mind</h4>
         <div id="amenity-container" className="amenity-container">
@@ -50,6 +50,7 @@ class App extends React.Component {
             if (index < 8) { return <Amenity key={`item ${amenity.name}`} data={amenity}/>}
           })}
         </div>
+        <a href="/">View all amenities</a>
       </div>
     )
   }
