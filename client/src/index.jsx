@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import './style.scss';
 
 import Amenity from './components/Amenity.jsx'
 
@@ -22,8 +23,12 @@ class App extends React.Component {
   render() {
     console.log(this.state.amenities)
     return (
-      <div id="amenity-container">
-        {this.state.amenities.map(amenity => <Amenity key={`item ${amenity.name}`} data={amenity}/>)}
+      <div id="amenity-full">
+        <h2 id="amenity-title">Amenities</h2>
+        <h4 id="amenity-subtitle">Updated with your health and safety in mind</h4>
+        <div id="amenity-container" className="amenity-container">
+          {this.state.amenities.map(amenity => <Amenity key={`item ${amenity.name}`} data={amenity}/>)}
+        </div>
       </div>
     )
   }
