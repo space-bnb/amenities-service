@@ -5,7 +5,8 @@ const cors = require('cors');
 const bodyParser = require ('body-parser');
 require('dotenv').config();
 
-app.use(express.static(__dirname + '/../client/dist'));
+app.use('/buildings/:workspaceId',express.static(__dirname + '/../client/dist'));
+app.use('/', express.static(__dirname + '/../client/dist'));
 app.use(cors());
 
 app.get('/amenities-api/amenities', function (req, res) {
