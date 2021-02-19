@@ -42,7 +42,7 @@ class App extends React.Component {
         <h4 id="amenity-subtitle">Updated with your health and safety in mind</h4>
         <div id="amenity-container" className="amenity-container">
           {this.state.amenities.map((amenity, index) => {
-            const img = `./images/${amenity.img}.png`;
+            const img = `../assets/icons/${amenity.img}.png`;
              if (index < 8) {
               return (
               <Amenity
