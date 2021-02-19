@@ -1,7 +1,6 @@
 import React from 'react';
-const images = require.context("../assets/icons", true)
 import Amenity from './Amenity.jsx'
-//import ExtendedAmenities from './ExtendedAmenities.jsx';
+import axios from 'axios';
 
 const preset = [{
   name: "Enhanced cleaning services",
@@ -43,11 +42,18 @@ class App extends React.Component {
         <h4 id="amenity-subtitle">Updated with your health and safety in mind</h4>
         <div id="amenity-container" className="amenity-container">
           {this.state.amenities.map((amenity, index) => {
-            const img = images;
-            if (index < 8) { return <Amenity key={`item ${amenity.name}`} data={amenity}/>}
+            const img = `./images/${amenity.img}.png`;
+             if (index < 8) {
+              return (
+              <Amenity
+                key={`item ${amenity.name}`}
+                data={amenity}
+                img={img}
+              />
+              )}
           })}
         </div>
-        {/* <ExtendedAmenities /> */}
+        <a href="#">View all amenities</a>
       </div>
     )
   }
